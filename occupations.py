@@ -42,13 +42,13 @@ def job_picker():
 	picked = False
 	while picked == False:
 		try: 
-			#pick a random key and percent each iteration. 
-			key = random.choice(OCCUPATIONS.keys())
-			percent = random.choice(range(0,101))
-			#if the key has a higher % than the random %, then return the key and value (along with the random %)
-			if OCCUPATIONS[key] > percent: 
-				return key, OCCUPATIONS[key], percent
-			#print OCCUPATIONS[key], percent
+			#pick a random percentage
+			percent = (random.randint(0,100)/100.0) * 100
+			for key in OCCUPATIONS: 
+				#if the key has a higher % than the random %, then return the key and value (along with the random %)
+				if OCCUPATIONS[key] > percent: 
+					return key, OCCUPATIONS[key] #, percent
+				#print OCCUPATIONS[key], percent
 		except: 
 			return "Dictionary is empty."
 			
