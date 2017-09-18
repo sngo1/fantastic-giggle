@@ -10,8 +10,7 @@ OCCUPATIONS = {}
 #Function to read in the csv file of occupations:
 def read_occupations(): 
 	i = 0
-    # Iterate through lines in csv file
-	for line in open('occupations.csv', 'r'):
+	for line in  open('occupations.csv', 'r'):
 		#cases where there are more than one comma
 		if line.count(",") > 1:
 			#rid the first quotation mark
@@ -40,16 +39,17 @@ for key in OCCUPATIONS:
 
 #Picks a random job with the percentage specified in the csv
 def job_picker(): 
-	picked = False
-	while picked == False:
+	# picked = False
+	# while picked == False:
 		try: 
-			#pick a random key and percent each iteration. 
-			key = random.choice(OCCUPATIONS.keys())
-			percent = (random.randint(1,100)/100.0) * 100
-			#if the key has a higher % than the random %, then return the key and value (along with the random %)
-			if OCCUPATIONS[key] > percent: 
-				return key, OCCUPATIONS[key], percent
-			print OCCUPATIONS[key], percent
+			#pick a random percentage
+			percent = (random.randint(0,100)/100.0) * 100
+			for key in OCCUPATIONS: 
+				#if the key has a higher % than the random %, then return the key and value (along with the random %)
+				# How does this work? ^
+				if OCCUPATIONS[key] > percent: 
+					return key, OCCUPATIONS[key] #, percent
+				#print OCCUPATIONS[key], percent
 		except: 
 			return "Dictionary is empty."
 			
